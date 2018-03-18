@@ -37,12 +37,12 @@ class Task {
 		case cancelled
 	}
 
-	public enum Category {
-		case snowRemoval
-		case lawnCare
-		case moving
-		case furnitureAssembly
-		case other
+    public enum Category: String {
+		case snowRemoval = "Snow Removal"
+		case lawnCare = "Lawn Care"
+		case moving = "Moving"
+		case furnitureAssembly = "Furniture Assembly"
+		case other = "Other"
 	}
 
 	private static func newId() -> Int {
