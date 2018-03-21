@@ -19,6 +19,10 @@ class FirstViewController: UIViewController, UITextFieldDelegate, UIPickerViewDe
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var compensationLabel: UILabel!
     @IBOutlet weak var compensationTextField: UITextField!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var desctiptionLabel: UILabel!
+    @IBOutlet weak var descriptionTextBox: UITextView!
     
     let categoryData = [Task.Category.furnitureAssembly.rawValue, Task.Category.lawnCare.rawValue, Task.Category.moving.rawValue, Task.Category.snowRemoval.rawValue, Task.Category.other.rawValue]
     
@@ -30,6 +34,8 @@ class FirstViewController: UIViewController, UITextFieldDelegate, UIPickerViewDe
         
         titleTextField.delegate = self
         titleTextField.returnKeyType = UIReturnKeyType.done
+        locationTextField.delegate = self
+        locationTextField.returnKeyType = UIReturnKeyType.done
         
         compensationTextField.delegate = self
         compensationTextField.keyboardType = UIKeyboardType.decimalPad
@@ -66,6 +72,8 @@ class FirstViewController: UIViewController, UITextFieldDelegate, UIPickerViewDe
         let task : Task = Task(requestor:requestor)
         task.title = titleTextField.text!
         task.dateTime = datePicker.date
+        task.location = locationTextField.text!
+        task.description = descriptionTextBox.text
     }
     
     
