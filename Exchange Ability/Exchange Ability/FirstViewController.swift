@@ -61,9 +61,9 @@ class FirstViewController: UIViewController, UITextFieldDelegate, UIPickerViewDe
     //MARK: Actions
     @IBAction func submitTaskButton(_ sender: UIButton) {
         
-        let user:User = User()
-        let requestor:Requestor = Requestor(user:user)
-        let task:Task = Task(requestor:requestor)
+        let user : User = User()
+        let requestor : Requestor = Requestor(user:user)
+        let task : Task = Task(requestor:requestor)
         task.title = titleTextField.text!
         task.dateTime = datePicker.date
     }

@@ -16,4 +16,12 @@ class Requestor : UserRole {
 	init(user: User) {
 		self.user = user
 	}
+
+	var tasks = [Task]()
+
+	func createTask(newTask: Task) {
+		tasks.append(newTask)
+	}
+
+
 }

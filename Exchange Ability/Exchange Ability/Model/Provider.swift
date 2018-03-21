@@ -17,4 +17,7 @@ class Provider : UserRole {
 	init(user: User) {
 		self.user = user
 	}
+
+	var tasks = [Task]()
+
 }
