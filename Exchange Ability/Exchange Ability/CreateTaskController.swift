@@ -1,5 +1,5 @@
 //
-//  CreateTaskController.swift
+//  FirstViewController.swift
 //  Exchange Ability
 //
 //  Created by Eva Suska on 2018-02-26.
@@ -74,7 +74,8 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
         task.dateTime = datePicker.date
         task.location = locationTextField.text!
         task.description = descriptionTextBox.text
-//		requestor.tasks
+		requestor.tasks.append(task)
+		allTasks.append(task)
     }
     
     
