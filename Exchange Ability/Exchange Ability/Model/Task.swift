@@ -42,6 +42,8 @@ class Task {
 		case lawnCare = "Lawn Care"
 		case moving = "Moving"
 		case furnitureAssembly = "Furniture Assembly"
+		case cleaning = "Cleaning"
+		case dogWalking = "Dog Walking"
 		case other = "Other"
 	}
 
