@@ -19,6 +19,7 @@ UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 
+		titleLabel.text = task?.title
         // Do any additional setup after loading the view.
     }
 
