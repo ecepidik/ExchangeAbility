@@ -11,7 +11,11 @@ import UIKit
 class TaskTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var titleLabel: UILabel!
-	
+	@IBOutlet weak var fee: UILabel!
+	@IBOutlet weak var Category: UILabel!
+	@IBOutlet weak var location: UILabel!
+	@IBOutlet weak var Date: UILabel!
+
 	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -14,6 +14,9 @@ var allTasks : [Task] = {
 	var task = Task(requestor : myUser.requestor!)
 	task.title = "Snow shovel"
 	task.category = Task.Category.snowRemoval
+	task.fee = 10.0
+	task.description = "Big driveway snow shovel"
+//	task.dateTime =
 	sampleTasks.append(task)
 	return sampleTasks;
 }()

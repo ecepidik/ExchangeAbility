@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Create Task-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="CreateTaskController" customModule="Exchange_Ability" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +149,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="Create Task" id="2qu-ey-cli">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="JVu-TA-e8V">
+                            <connections>
+                                <action selector="cancel:" destination="9pv-A4-QxB" id="HXY-FU-BGD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="gfd-VK-Zjq">
+                            <connections>
+                                <segue destination="G9x-re-51d" kind="unwind" unwindAction="unwindToTaskListWithSender:" id="z0t-uL-T7A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="categoryLabel" destination="dc6-V7-41o" id="VPp-sC-eg1"/>
@@ -162,13 +173,15 @@
                         <outlet property="desctiptionLabel" destination="HbJ-9f-bQZ" id="xef-pA-h0e"/>
                         <outlet property="locationLabel" destination="HwF-LQ-rPW" id="lQ4-28-z5b"/>
                         <outlet property="locationTextField" destination="SRF-cC-tdH" id="DYX-Ao-eCP"/>
+                        <outlet property="saveButton" destination="gfd-VK-Zjq" id="tms-hA-sc3"/>
                         <outlet property="titleLabel" destination="O0i-UZ-vid" id="NDZ-O3-aGz"/>
                         <outlet property="titleTextField" destination="67c-uo-jJ4" id="39k-6s-qjL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                <exit id="G9x-re-51d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3889" y="149"/>
+            <point key="canvasLocation" x="5513" y="185"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -208,15 +221,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskTableViewCell" rowHeight="126" id="GNz-Rx-w3i" customClass="TaskTableViewCell" customModule="Exchange_Ability" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="126"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskTableViewCell" rowHeight="110" id="GNz-Rx-w3i" customClass="TaskTableViewCell" customModule="Exchange_Ability" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GNz-Rx-w3i" id="Pqr-5G-4Gd" customClass="TaskTableViewCell" customModule="Exchange_Ability">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="125.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0g6-Rp-vEY">
-                                            <rect key="frame" x="8" y="0.0" width="98" height="21"/>
+                                            <rect key="frame" x="93" y="9" width="98" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uak-04-M54">
+                                            <rect key="frame" x="16" y="11" width="43" height="39"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScX-RL-70w">
+                                            <rect key="frame" x="93" y="63" width="36" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDs-Cb-7Pt">
+                                            <rect key="frame" x="222" y="63" width="66" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gR3-bS-fxL">
+                                            <rect key="frame" x="222" y="11" width="71" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -225,6 +266,10 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="Category" destination="gR3-bS-fxL" id="mME-Bz-7cd"/>
+                                    <outlet property="Date" destination="ScX-RL-70w" id="gcH-aW-K1q"/>
+                                    <outlet property="fee" destination="Uak-04-M54" id="T6h-lH-gfF"/>
+                                    <outlet property="location" destination="KDs-Cb-7Pt" id="GAj-Bx-Lwb"/>
                                     <outlet property="titleLabel" destination="0g6-Rp-vEY" id="dVW-bp-Xdq"/>
                                 </connections>
                             </tableViewCell>
@@ -237,7 +282,7 @@
                     <navigationItem key="navigationItem" title="Tasks" id="GhE-pC-Nu6">
                         <barButtonItem key="rightBarButtonItem" title="Create Task" id="Uob-Tc-sdN">
                             <connections>
-                                <segue destination="9pv-A4-QxB" kind="show" id="Zyg-NL-LJa"/>
+                                <segue destination="VN8-Cb-P2E" kind="presentation" id="Zyg-NL-LJa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -283,13 +328,31 @@
             </objects>
             <point key="canvasLocation" x="1483.2" y="80.059970014992516"/>
         </scene>
+        <!--First-->
+        <scene sceneID="xXa-P4-sPz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VN8-Cb-P2E" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KxZ-R8-gyj">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="Mgf-Ci-8H1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Zd-yt-dQa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4164" y="170"/>
+        </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zyg-NL-LJa"/>
         <segue reference="fSe-va-Epx"/>
     </inferredMetricsTieBreakers>
 </document>

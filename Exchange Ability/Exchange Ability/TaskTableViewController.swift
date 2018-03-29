@@ -44,9 +44,18 @@ class TaskTableViewController: UITableViewController {
 		let task = allTasks[indexPath.row]
 
 		cell.titleLabel.text = task.title
+		cell.fee.text = String(task.fee)
+//		cell.Category.text = String(describing: task.category)
+		cell.Date.text = String(describing: task.dateTime)
 
 		return cell
     }
+
+	@IBAction func unwindToTaskList(sender: UIStoryboardSegue) {
+		if let view = view as? UITableView {
+			view.reloadData();
+		}
+	}
 
     /*
     // Override to support conditional editing of the table view.

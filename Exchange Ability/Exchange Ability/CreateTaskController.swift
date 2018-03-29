@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -23,8 +24,15 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var desctiptionLabel: UILabel!
     @IBOutlet weak var descriptionTextBox: UITextView!
-    
-    let categoryData = [Task.Category.furnitureAssembly.rawValue, Task.Category.lawnCare.rawValue, Task.Category.moving.rawValue, Task.Category.snowRemoval.rawValue, Task.Category.other.rawValue]
+	@IBOutlet weak var saveButton: UIBarButtonItem!
+
+	@IBAction func cancel(_ sender: UIBarButtonItem) {
+		dismiss(animated: true, completion: nil)
+
+	}
+
+
+	let categoryData = [Task.Category.furnitureAssembly.rawValue, Task.Category.lawnCare.rawValue, Task.Category.moving.rawValue, Task.Category.snowRemoval.rawValue, Task.Category.other.rawValue]
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -63,7 +71,35 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
         textField.resignFirstResponder()
         return true
     }
-    
+
+	//MARK: Navigation
+	// This method lets you configure a view controller before it's presented.
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+		super.prepare(for: segue, sender: sender)
+
+		// Configure the destination view controller only when the save button is pressed.
+		guard let button = sender as? UIBarButtonItem, button === saveButton else {
+			os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+			return
+		}
+
+		let user : User = myUser
+		let requestor : Requestor = Requestor(user:user)
+		let task : Task = Task(requestor:requestor)
+		task.title = titleTextField.text!
+		task.dateTime = datePicker.date
+		task.location = locationTextField.text!
+		task.description = descriptionTextBox.text
+		if let fee = Double(compensationTextField.text!) {
+			task.fee = fee
+		}
+		requestor.tasks.append(task)
+		allTasks.append(task)
+
+	}
+
+
     //MARK: Actions
     @IBAction func submitTaskButton(_ sender: UIButton) {
         
@@ -74,6 +110,7 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
         task.dateTime = datePicker.date
         task.location = locationTextField.text!
         task.description = descriptionTextBox.text
+		task.fee = Double(compensationTextField.text!)!
 		requestor.tasks.append(task)
 		allTasks.append(task)
     }
