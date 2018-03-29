@@ -28,9 +28,7 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
 
 	@IBAction func cancel(_ sender: UIBarButtonItem) {
 		dismiss(animated: true, completion: nil)
-
 	}
-
 
 	let categoryData = [Task.Category.furnitureAssembly.rawValue, Task.Category.lawnCare.rawValue, Task.Category.moving.rawValue, Task.Category.snowRemoval.rawValue, Task.Category.other.rawValue]
     
@@ -84,10 +82,11 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
 			return
 		}
 
-		let user : User = myUser
+		let user : User = myUser	// UPDATE this when we have a database
 		let requestor : Requestor = Requestor(user:user)
 		let task : Task = Task(requestor:requestor)
 		task.title = titleTextField.text!
+		task.category = Task.Category(rawValue: categoryData[categoryPicker.selectedRow(inComponent: 0)])!
 		task.dateTime = datePicker.date
 		task.location = locationTextField.text!
 		task.description = descriptionTextBox.text
@@ -98,22 +97,6 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
 		allTasks.append(task)
 
 	}
-
-
-    //MARK: Actions
-    @IBAction func submitTaskButton(_ sender: UIButton) {
-        
-        let user : User = myUser
-        let requestor : Requestor = Requestor(user:user)
-        let task : Task = Task(requestor:requestor)
-        task.title = titleTextField.text!
-        task.dateTime = datePicker.date
-        task.location = locationTextField.text!
-        task.description = descriptionTextBox.text
-		task.fee = Double(compensationTextField.text!)!
-		requestor.tasks.append(task)
-		allTasks.append(task)
-    }
     
     
 }

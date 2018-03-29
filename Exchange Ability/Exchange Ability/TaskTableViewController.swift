@@ -45,7 +45,7 @@ class TaskTableViewController: UITableViewController {
 
 		cell.titleLabel.text = task.title
 		cell.fee.text = String(task.fee)
-//		cell.Category.text = String(describing: task.category)
+		cell.Category.text = task.category.rawValue
 		cell.Date.text = String(describing: task.dateTime)
 
 		return cell
@@ -56,7 +56,7 @@ class TaskTableViewController: UITableViewController {
 			view.reloadData();
 		}
 	}
-
+	
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -102,4 +102,19 @@ class TaskTableViewController: UITableViewController {
     }
     */
 
+
+	// MARK: Navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "segueTask" {
+
+			let task = allTasks[((view as! UITableView).indexPathForSelectedRow!.row)]
+
+			// Create an instance of PlayerTableViewController and pass the variable
+			let destinationVC = segue.destination as! TaskViewController
+			destinationVC.task = task
+
+		}
+	}
+
 }
+

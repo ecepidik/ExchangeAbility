@@ -25,6 +25,7 @@
 		A6CF4F722069D715004941F9 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CF4F712069D715004941F9 /* Database.swift */; };
 		A6CF4F742069DCBC004941F9 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CF4F732069DCBC004941F9 /* TaskTableViewCell.swift */; };
 		A6CF4F762069E08B004941F9 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CF4F752069E08B004941F9 /* TaskTableViewController.swift */; };
+		A6D50C25206C9B0100C6F1D6 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D50C24206C9B0100C6F1D6 /* TaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		A6CF4F712069D715004941F9 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		A6CF4F732069DCBC004941F9 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		A6CF4F752069E08B004941F9 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		A6D50C24206C9B0100C6F1D6 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				A6B1F71A20451B6D00BF5DFF /* LaunchScreen.storyboard */,
 				A6B1F71D20451B6D00BF5DFF /* Info.plist */,
 				A6CF4F712069D715004941F9 /* Database.swift */,
+				A6D50C24206C9B0100C6F1D6 /* TaskViewController.swift */,
 			);
 			path = "Exchange Ability";
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			files = (
 				A6CF4F762069E08B004941F9 /* TaskTableViewController.swift in Sources */,
 				A6CF4F742069DCBC004941F9 /* TaskTableViewCell.swift in Sources */,
+				A6D50C25206C9B0100C6F1D6 /* TaskViewController.swift in Sources */,
 				A6B1F73320451E2600BF5DFF /* Task.swift in Sources */,
 				A6B1F739204523B400BF5DFF /* Requestor.swift in Sources */,
 				A6B1F71020451B6D00BF5DFF /* AppDelegate.swift in Sources */,
