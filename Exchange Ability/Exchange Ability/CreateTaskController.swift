@@ -94,6 +94,7 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
 		if let fee = Double(compensationTextField.text!) {
 			task.fee = fee
 		}
+		task.photo = photoImageView.image
 		requestor.tasks.append(task)
 		allTasks.append(task)
 

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eva Suska. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Task {
 	private static var lastId = 0
@@ -18,7 +18,7 @@ class Task {
 	public var fee = 0.0
 	public var location = "" 	// TODO make into location object
 	public var immediateAssign = false
-	// TODO images
+	public var photo: UIImage?
 	public var state: State?
 	public var requestor: Requestor
 	public var provider: Provider?
