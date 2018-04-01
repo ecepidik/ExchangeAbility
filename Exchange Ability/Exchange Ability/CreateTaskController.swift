@@ -26,6 +26,7 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var descriptionTextBox: UITextView!
 	@IBOutlet weak var saveButton: UIBarButtonItem!
 
+	@IBOutlet weak var photoImageView: UIImageView!
 	@IBAction func cancel(_ sender: UIBarButtonItem) {
 		dismiss(animated: true, completion: nil)
 	}
@@ -97,7 +98,11 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
 		allTasks.append(task)
 
 	}
-    
+
+	//MARK: Actions
+	@IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+	}
+
     
 }
 
