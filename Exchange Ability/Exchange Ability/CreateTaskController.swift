@@ -23,7 +23,7 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var desctiptionLabel: UILabel!
-    @IBOutlet weak var descriptionTextBox: UITextView!
+    @IBOutlet weak var descriptionTextField: UITextField!
 	@IBOutlet weak var saveButton: UIBarButtonItem!
 
 	@IBOutlet weak var photoImageView: UIImageView!
@@ -90,7 +90,7 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
 		task.category = Task.Category(rawValue: categoryData[categoryPicker.selectedRow(inComponent: 0)])!
 		task.dateTime = datePicker.date
 		task.location = locationTextField.text!
-		task.description = descriptionTextBox.text
+        task.description = descriptionTextField.text!
 		if let fee = Double(compensationTextField.text!) {
 			task.fee = fee
 		}
