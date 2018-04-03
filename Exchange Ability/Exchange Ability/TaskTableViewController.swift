@@ -44,9 +44,10 @@ class TaskTableViewController: UITableViewController {
 		let task = allTasks[indexPath.row]
 
 		cell.titleLabel.text = task.title
-		cell.fee.text = String(task.fee)
+        cell.fee.text = String(format:"%.2f", task.fee)
 		cell.Category.text = task.category.rawValue
 		cell.Date.text = String(describing: task.dateTime)
+        cell.location.text = task.location
 
 		return cell
     }

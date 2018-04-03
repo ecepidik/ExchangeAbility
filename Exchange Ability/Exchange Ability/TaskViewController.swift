@@ -32,13 +32,10 @@ UIViewController {
 
 	override func viewDidLoad() {
         super.viewDidLoad()
-
-        let dateFormatter = DateFormatter()
-        let date = dateFormatter.string(from: (task?.dateTime)!)
         
 		titleValue.text = task?.title
         categoryValue.text = task?.category.rawValue
-        dateValue.text = date
+        dateValue.text = String(describing: task?.dateTime)
         compensationValue.text = String(format: "%.2f", (task?.fee)!)
         locationValue.text = task?.location
         descriptionValue.text = task?.description
