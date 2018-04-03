@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import os.log
+
 
 class TaskViewController: 
 UIViewController {
@@ -23,8 +25,8 @@ UIViewController {
     @IBOutlet weak var compensationValue: UILabel!
     @IBOutlet weak var locationValue: UILabel!
     @IBOutlet weak var descriptionValue: UILabel!
-    
-    
+	@IBOutlet weak var assignTaskButton: UIButton!
+
 	var task: Task?
 
 
@@ -50,14 +52,20 @@ UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    // MARK: - Navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+		super.prepare(for: segue, sender: sender)
+
+		// Configure the destination view controller only when the save button is pressed.
+		guard let button = sender as? UIButton, button === assignTaskButton else {
+			os_log("The assign button was not pressed, cancelling", log: OSLog.default, type: .debug)
+			return
+		}
+
+		task?.provider = myUser.provider
+		task?.state = Task.State.assigned
+	}
 
 }

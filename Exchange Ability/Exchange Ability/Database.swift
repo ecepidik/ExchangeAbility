@@ -15,8 +15,11 @@ var allTasks : [Task] = {
 	task.title = "Snow shovel"
 	task.category = Task.Category.snowRemoval
 	task.fee = 10.0
-	task.description = "Big driveway snow shovel"
-//	task.dateTime =
+	task.description = "I have a large driveway I want shoveled"
+	task.dateTime = Date()
+	task.location = "3514 rue Hutchison"
+	//	TODO: add image
+	task.state = Task.State.opened
 	sampleTasks.append(task)
 	return sampleTasks;
 }()

@@ -99,6 +99,7 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
 		}
 		task.photo = photoImageView.image
 		requestor.tasks.append(task)
+		task.state = Task.State.opened
 		allTasks.append(task)
 
 	}
