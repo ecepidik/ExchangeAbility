@@ -47,6 +47,9 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
         compensationTextField.delegate = self
         compensationTextField.keyboardType = UIKeyboardType.decimalPad
         compensationTextField.returnKeyType = UIReturnKeyType.done
+        
+        descriptionTextField.delegate = self
+        descriptionTextField.returnKeyType = UIReturnKeyType.done
 	}
     
 	override func didReceiveMemoryWarning() {
