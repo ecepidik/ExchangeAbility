@@ -6,6 +6,9 @@ const express = require('express')
 const app = express();
 const { Pool, Client } = require('pg')
 
+const tasksRouter = require('./tasks.js');
+app.use('/tasks', tasksRouter)
+
 const pool = new Pool({
     user: 'exchangeability',
     host: 'exchangeabilitydata.chwjpkpq8pgl.us-east-2.rds.amazonaws.com',
@@ -26,7 +29,11 @@ client.connect()
 
 // app.listen(8000, () => {
 //     console.log('here');
-// });
+// });k,
+
+app.get('tasks/:id', (req, res, next) => {
+
+});
 
 app.get('/', (req, res) => {
     client.query('SELECT id, email, firstname, lastname, phone FROM public.users;', (err, obj) =>
