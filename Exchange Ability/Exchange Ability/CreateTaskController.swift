@@ -50,6 +50,8 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
         
         descriptionTextField.delegate = self
         descriptionTextField.returnKeyType = UIReturnKeyType.done
+        
+        APIService().getUsers();
 	}
     
 	override func didReceiveMemoryWarning() {
