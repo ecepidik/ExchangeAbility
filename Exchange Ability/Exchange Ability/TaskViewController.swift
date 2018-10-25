@@ -35,7 +35,7 @@ UIViewController {
         
 		titleValue.text = task?.title
         categoryValue.text = task?.category.rawValue
-        dateValue.text = String(describing: task?.dateTime)
+        dateValue.text = String(describing: (task?.dateTime)!)
         compensationValue.text = String(format: "%.2f", (task?.fee)!)
         locationValue.text = task?.location
         descriptionValue.text = task?.description
