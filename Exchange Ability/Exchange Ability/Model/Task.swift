@@ -32,6 +32,7 @@ class Task {
 	public enum State {
 		case opened
 		case completed
+		case pendingCompleted		// if provider marks as completed before requestor
 		case pending
 		case assigned
 		case cancelled
