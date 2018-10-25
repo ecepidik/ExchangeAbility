@@ -38,15 +38,29 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 		// check if it is before Date and time of the task
 		if (task?.dateTime)! < Date() {
 			// if it is then alert to ask if you are sure
-			let alert = UIAlertController(title: "Are you sure you completed this task?", message: "It is before the task scheduled time. The poster must approve that it is completed if you say yes.", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+			let alert = UIAlertController(title: "Are you sure you completed this task?", message: "It is before the scheduled task time.", preferredStyle: .alert)
+
+			let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
+				pendingTask()
+
+				// bring back to My Tasks page
+				let assignedTasksView = self.storyboard?.instantiateViewController(withIdentifier: "AssignedTableViewController")
+				self.present(assignedTasksView!, animated: true, completion: nil)
+
+				// TODO: refresh My Tasks page
+			}
+			alert.addAction(yesAction)
 			alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+			self.present(alert, animated: true)
 		}
 
-		// mark task state as pendingCompleted
-		task?.state = Task.State.pendingCompleted
+		func pendingTask() {
+			// mark task state as pendingCompleted
+			task?.state = Task.State.pendingCompleted
 
-		// TODO: send message to requestor to confirm it was completed
+			// TODO: send message to requestor to confirm it was completed
+		}
+
 
 	}
 
