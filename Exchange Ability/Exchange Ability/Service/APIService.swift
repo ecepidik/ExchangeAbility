@@ -10,15 +10,25 @@ import Foundation
 
 class APIService {
     
-    let url = URL(string: "http://localhost:8000");
+    let url = "http://localhost:8000";
     
-    func getUsers() {
-
-        let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
-            print("The response was:")
-           // print (data);
-            let users = try? JSONSerialization.jsonObject(with: data!);
-            print(users)
+    func getUsers(completion: @escaping (_ users: Any) -> ()) {
+        var users: Any = {};
+        
+        let usersUrl = URL(string:(url));
+        let task = URLSession.shared.dataTask(with: usersUrl!) {
+            (data, response, error) in
+                users = try? JSONSerialization.jsonObject(with: data!);
+            completion(users)
+        }
+        task.resume()
+    }
+    
+    func getTasks() {
+        let usersUrl = URL(string:(url+"/tasks"));
+        let task = URLSession.shared.dataTask(with: usersUrl!) {(data, response, error) in
+            let tasks = try? JSONSerialization.jsonObject(with: data!);
+            print(tasks)
         }
         task.resume()
     }
