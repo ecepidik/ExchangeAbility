@@ -1,14 +1,14 @@
 //
-//  TaskTableViewController.swift
+//  AssignedTableViewController.swift
 //  Exchange Ability
 //
-//  Created by Eva Suska on 2018-03-26.
+//  Created by Eva Suska on 2018-10-24.
 //  Copyright © 2018 Eva Suska. All rights reserved.
 //
 
 import UIKit
 
-class TaskTableViewController: UITableViewController {
+class AssignedTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,44 +20,48 @@ class TaskTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		return 1
+	}
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allTasks.count
-    }
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return allTasks.count
+	}
 
-	let cellIdentifier = "TaskTableViewCell"
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell  else {
-			fatalError("The dequeued cell is not an instance of TaskTableViewCell.")
+	let cellIdentifier = "AssignedTaskTableViewCell"
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "AssignedTaskTableViewCell", for: indexPath) as? AssignedTaskTableViewCell  else {
+			fatalError("The dequeued cell is not an instance of AssignedTaskTableViewCell.")
 		}
 
-		let task = allTasks[indexPath.row]
+		let task = assignedTasks[indexPath.row]
 
-		cell.titleLabel.text = task.title
-        cell.fee.text = String(format:"%.2f", task.fee)
-		cell.Category.text = task.category.rawValue
-		cell.Date.text = String(describing: task.dateTime)
-        cell.location.text = task.location
+		cell.title.text = task.title
+		cell.fee.text = String(format:"%.2f", task.fee)
+		cell.dateTime.text = String(describing: task.dateTime)
+		cell.location.text = task.location
 
 		return cell
-    }
+	}
 
-	@IBAction func unwindToTaskList(sender: UIStoryboardSegue) {
+	@IBAction func unwindToAssignedList(sender: UIStoryboardSegue) {
 		if let view = view as? UITableView {
 			view.reloadData();
 		}
 	}
-	
+
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -94,17 +98,16 @@ class TaskTableViewController: UITableViewController {
     */
 
 	// MARK: Navigation
+	// send the task that you clicked on information to the AssignedTaskViewController
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "segueTask" {
+		if segue.identifier == "segueAssignedTask" {
 
-			let task = allTasks[((view as! UITableView).indexPathForSelectedRow!.row)]
+			let task = assignedTasks[((view as! UITableView).indexPathForSelectedRow!.row)]
 
 			// Create an instance of PlayerTableViewController and pass the variable
-			let destinationVC = segue.destination as! TaskViewController
+			let destinationVC = segue.destination as! AssignedTaskViewController
 			destinationVC.task = task
 
 		}
 	}
-
 }
-

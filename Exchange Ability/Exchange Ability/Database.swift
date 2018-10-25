@@ -23,4 +23,17 @@ var allTasks : [Task] = {
 	sampleTasks.append(task)
 	return sampleTasks;
 }()
-
+var assignedTasks : [Task] = {
+	var sampleTasks = [Task]()
+	var task = Task(requestor : myUser.requestor!)
+	task.title = "Take bottle recycling"
+	task.category = Task.Category.other
+	task.fee = 0.0
+	task.description = "I have wine bottles and beers bottles to be returned. You can keep the money from the return if you take them"
+	task.dateTime = Date()
+	task.location = "3666 rue Hutchison"
+	//	TODO: add image
+	task.state = Task.State.assigned
+	sampleTasks.append(task)
+	return sampleTasks;
+}()

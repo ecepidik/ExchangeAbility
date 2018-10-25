@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>420499174638-iv1ljj3skqs9fkvmemm097apjb7a5vgk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.420499174638-iv1ljj3skqs9fkvmemm097apjb7a5vgk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDCKggYwiQ_afS6g-V_nZnwRE_6cO0hBxI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>420499174638</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Eva-Suska.Exchange-Ability</string>
+	<key>PROJECT_ID</key>
+	<string>exchange-ability</string>
+	<key>STORAGE_BUCKET</key>
+	<string>exchange-ability.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:420499174638:ios:40b26c1b892f567a</string>
+	<key>DATABASE_URL</key>
+	<string>https://exchange-ability.firebaseio.com</string>
+</dict>
+</plist>
