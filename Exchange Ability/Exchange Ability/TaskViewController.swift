@@ -25,6 +25,8 @@ UIViewController {
     @IBOutlet weak var compensationValue: UILabel!
     @IBOutlet weak var locationValue: UILabel!
     @IBOutlet weak var descriptionValue: UILabel!
+	@IBOutlet weak var image: UIImageView!
+	@IBOutlet weak var requestor: UIButton!
 	@IBOutlet weak var assignTaskButton: UIButton!
 
 	var task: Task?
@@ -39,11 +41,25 @@ UIViewController {
         compensationValue.text = String(format: "%.2f", (task?.fee)!)
         locationValue.text = task?.location
         descriptionValue.text = task?.description
+		if task?.photo != nil {
+			image = UIImageView(image: task?.photo)
+		}
+		assignTaskButton.setTitle(task?.requestor.user.firstName, for: .normal)
         
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
+	@IBAction func goToRequestorProfile(_ sender: Any) {
+		// send the task data over
+		
+
+		// open the Requestor profile page
+		let requestorView = self.storyboard?.instantiateViewController(withIdentifier: "RequestorViewController")
+		self.present(requestorView!, animated: true, completion: nil)
+
+	}
+
+	override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -64,5 +80,7 @@ UIViewController {
 		task?.provider = myUser.provider
 		task?.state = Task.State.assigned
 	}
+
+	
 
 }

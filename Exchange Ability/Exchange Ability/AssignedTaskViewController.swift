@@ -126,20 +126,6 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 		self.dismiss(animated: true, completion: nil)
 	}
 
-//	func  messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-//
-//
-//	}
-	//	func unassignTask() {
-//		// create alert to confirm
-//		let alert = UIAlertController(title: "Are you sure you want to cancel this task?", message: "Canceling a task after it's assigned to you will lower your raiting.", preferredStyle: .alert)
-//
-//		alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
-//		alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-//
-//		self.present(alert, animated: true)
-//	}
-
     /*
     // MARK: - Navigation
 
