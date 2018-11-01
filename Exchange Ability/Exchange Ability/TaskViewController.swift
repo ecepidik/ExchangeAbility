@@ -43,22 +43,21 @@ UIViewController {
 		if task?.photo != nil {
 			image = UIImageView(image: task?.photo)
 		}
-		assignTaskButton.setTitle(task?.requestor.user.firstName, for: .normal)
-        
+
         // Do any additional setup after loading the view.
     }
 
-	@IBAction func goToRequestorProfile(_ sender: Any) {
-		// TODO send the task data over
-		let requestor = task?.requestor
-
-		// open the Requestor profile page
-//		let requestorViewContr = RequestorViewController(nibName: "RequestorViewController", bundle: nil)
-		let requestorViewContr = self.storyboard?.instantiateViewController(withIdentifier: "RequestorViewController")
-//		requestorViewContr.requestor = requestor
-		self.navigationController?.pushViewController(requestorViewContr!, animated: true)
-
-	}
+//	@IBAction func goToRequestorProfile(_ sender: Any) {
+//		// TODO send the task data over
+//		let requestor = task?.requestor
+//
+//		// open the Requestor profile page
+////		let requestorViewContr = RequestorViewController(nibName: "RequestorViewController", bundle: nil)
+//		let requestorViewContr = self.storyboard?.instantiateViewController(withIdentifier: "RequestorViewController")
+////		requestorViewContr.requestor = requestor
+//		self.navigationController?.pushViewController(requestorViewContr!, animated: true)
+//
+//	}
 
 	override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,26 +65,33 @@ UIViewController {
     }
     
 
+	// when you click do this task button
+	@IBAction func assignTask(_ sender: Any) {
+		// assigned the task to the current user and updates the state
+		task?.provider = myUser.provider
+		task?.state = Task.State.assigned
+		// go back to the previous feed page
+		performSegue(withIdentifier: "unwindToTaskList", sender: self)
+	}
 
     // MARK: - Navigation
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-		super.prepare(for: segue, sender: sender)
-
-		// Configure the destination view controller only when the save button is pressed.
-		guard let button = sender as? UIButton, button === assignTaskButton else {
-			os_log("The assign button was not pressed, cancelling", log: OSLog.default, type: .debug)
-			return
-		}
-
-		task?.provider = myUser.provider
-		task?.state = Task.State.assigned
-
-//		if segue.destination is RequestorViewController
-//		{
-//			let vc = segue.destination as? RequestorViewController
-//			vc?.requestor = task?.requestor
+//		super.prepare(for: segue, sender: sender)
+//
+//		// Configure the destination view controller only when the save button is pressed.
+//		guard let button = sender as? UIButton, button === assignTaskButton else {
+//			os_log("The assign button was not pressed, cancelling", log: OSLog.default, type: .debug)
+//			return
 //		}
+
+		// when pressing on the requestors name, bring to requestor page
+		if segue.destination is RequestorViewController
+		{
+			// pass the requestor info over
+			let vc = segue.destination as? RequestorViewController
+			vc?.requestor = task?.requestor
+		}
 
 	}
 

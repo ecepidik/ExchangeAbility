@@ -716,24 +716,20 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="User"/>
                                         <connections>
-                                            <action selector="goToRequestorProfile:" destination="Cov-AY-dVT" eventType="touchUpInside" id="Rqt-zg-1Fv"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQi-Ia-jgI">
-                                        <rect key="frame" x="135" y="423" width="105" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Do this Task!"/>
-                                        <connections>
-                                            <segue destination="aVj-EU-IDe" kind="unwind" unwindAction="unwindToTaskListWithSender:" id="hsX-eW-PKD"/>
+                                            <segue destination="AvI-cL-rJ7" kind="show" id="Jjg-Lp-3DG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHP-kt-5Oa">
-                                        <rect key="frame" x="26" y="423" width="88" height="30"/>
+                                        <rect key="frame" x="143" y="557" width="88" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Do This Task"/>
+                                        <connections>
+                                            <action selector="assignTask:" destination="Cov-AY-dVT" eventType="touchUpInside" id="Ar6-Bq-QrT"/>
+                                            <segue destination="aVj-EU-IDe" kind="unwind" identifier="unwindToTaskList" unwindAction="unwindToTaskListWithSender:" id="FIP-3i-j9g"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZJ-fo-KJD">
-                                        <rect key="frame" x="103" y="489" width="169" height="79"/>
+                                        <rect key="frame" x="96" y="448" width="169" height="79"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -750,7 +746,6 @@
                         <viewLayoutGuide key="safeArea" id="rsj-tQ-y9G"/>
                     </view>
                     <connections>
-                        <outlet property="assignTaskButton" destination="FQi-Ia-jgI" id="R6l-UY-sJQ"/>
                         <outlet property="categoryLabel" destination="y1A-6R-PWf" id="65x-KS-3hi"/>
                         <outlet property="categoryValue" destination="K3O-03-5bm" id="Om4-tJ-3NJ"/>
                         <outlet property="compensationLabel" destination="1tA-ey-eSQ" id="gLF-fw-hnY"/>
@@ -830,7 +825,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDO-zl-7V3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7815.1999999999998" y="961.16941529235385"/>
+            <point key="canvasLocation" x="6738" y="949"/>
         </scene>
         <!--First-->
         <scene sceneID="xXa-P4-sPz">
@@ -908,24 +903,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alS-HC-y1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-682.39999999999998" y="1055.6221889055473"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="RDB-V1-hSz">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IKr-DS-OIT" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Iv-sb-rjH">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="AvI-cL-rJ7" kind="relationship" relationship="rootViewController" id="au1-fL-13K"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u1y-cO-EXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6876" y="961.16941529235385"/>
         </scene>
     </scenes>
     <resources>
