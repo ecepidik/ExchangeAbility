@@ -10,6 +10,8 @@ import UIKit
 
 class RequestorViewController: UIViewController {
 	@IBOutlet weak var requestorName: UILabel!
+	@IBOutlet weak var email: UILabel!
+	@IBOutlet weak var phoneNumber: UILabel!
 
 	var requestor: Requestor?
 
@@ -17,8 +19,10 @@ class RequestorViewController: UIViewController {
         super.viewDidLoad()
 
 		requestorName.text = requestor?.user.firstName
+		email.text = requestor?.user.email
+		phoneNumber.text = requestor?.user.phone
 
-        // Do any additional setup after loading the view.
+		// TODO get total average rating for this user
     }
     
 
