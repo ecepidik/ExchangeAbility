@@ -45,7 +45,7 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 
 				// bring back to My Tasks page
 				let assignedTasksView = self.storyboard?.instantiateViewController(withIdentifier: "AssignedTableViewController")
-				self.present(assignedTasksView!, animated: true, completion: nil)
+				self.navigationController?.pushViewController(assignedTasksView!, animated: true)
 
 				// TODO: refresh My Tasks page
 			}
@@ -78,7 +78,7 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 
 			// bring back to My Tasks page
 			let assignedTasksView = self.storyboard?.instantiateViewController(withIdentifier: "AssignedTableViewController")
-			self.present(assignedTasksView!, animated: true, completion: nil)
+			self.navigationController?.pushViewController(assignedTasksView!, animated: true)
 		}
 
 		alert.addAction(yesAction)

@@ -9,15 +9,14 @@
 import UIKit
 
 class RequestorViewController: UIViewController {
-
-	var task: Task?
-
 	@IBOutlet weak var requestorName: UILabel!
-	
+
+	var requestor: Requestor?
+
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-		requestorName.text = task?.title
+		requestorName.text = requestor?.user.firstName
 
         // Do any additional setup after loading the view.
     }

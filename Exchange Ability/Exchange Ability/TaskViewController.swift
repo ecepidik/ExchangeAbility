@@ -31,7 +31,6 @@ UIViewController {
 
 	var task: Task?
 
-
 	override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,12 +49,14 @@ UIViewController {
     }
 
 	@IBAction func goToRequestorProfile(_ sender: Any) {
-		// send the task data over
-		
+		// TODO send the task data over
+		let requestor = task?.requestor
 
 		// open the Requestor profile page
-		let requestorView = self.storyboard?.instantiateViewController(withIdentifier: "RequestorViewController")
-		self.present(requestorView!, animated: true, completion: nil)
+//		let requestorViewContr = RequestorViewController(nibName: "RequestorViewController", bundle: nil)
+		let requestorViewContr = self.storyboard?.instantiateViewController(withIdentifier: "RequestorViewController")
+//		requestorViewContr.requestor = requestor
+		self.navigationController?.pushViewController(requestorViewContr!, animated: true)
 
 	}
 
@@ -79,6 +80,13 @@ UIViewController {
 
 		task?.provider = myUser.provider
 		task?.state = Task.State.assigned
+
+//		if segue.destination is RequestorViewController
+//		{
+//			let vc = segue.destination as? RequestorViewController
+//			vc?.requestor = task?.requestor
+//		}
+
 	}
 
 	
