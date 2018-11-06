@@ -105,6 +105,14 @@ class CreateTaskController: UIViewController, UITextFieldDelegate, UIPickerViewD
 		requestor.tasks.append(task)
 		task.state = Task.State.opened
 		allTasks.append(task)
+        
+        APIService().createTask(task: task) { (err, result) in
+            if(err != nil){
+                print(err!.localizedDescription)
+                return
+            }
+            print(result ?? "")
+        }
 
 	}
 
