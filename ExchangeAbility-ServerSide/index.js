@@ -43,3 +43,28 @@ app.listen(8000, () => console.log(`Example app listening on port 8000!`))
 //     console.log(err, res)
 //     });
 // })
+
+// app.use(express.bodyParser());
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
+app.post('/add/task', function(req, res) {
+    var parsedBody = req.body;
+    console.log(req.body)
+
+    var queryTask = '\'' + req.body.requesterid + '\', \'' + req.body.title
+        + '\', \'2018-11-15\', \'21:00:00\', \''
+        + req.body.fee + '\', \''
+        + req.body.address + '\', \''
+        + req.body.description + '\', \'open\''
+    console.log(queryTask)
+        //noinspection JSAnnotator
+
+    client.query(
+        'INSERT INTO tasks (requesterid, title, date, time, fee, address, description, state)' +
+        'VALUES (' + queryTask + ');', (err, obj) =>
+    {res.send()})
+})

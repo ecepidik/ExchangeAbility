@@ -12,7 +12,7 @@ class APIService {
     
     let url = "http://localhost:8000";
     
-    func getUsers(completion: @escaping (_ users: Any) -> ()) {
+    func getUsers(completion: @escaping (_ users: Any) -> ()) -> Void {
         var users: Any = {};
         
         let usersUrl = URL(string:(url));
@@ -24,6 +24,58 @@ class APIService {
         task.resume()
     }
     
+    func addTask(completion: @escaping (_ users: Any) -> ())-> Void {
+//    func addTask(task: Task, completion: @escaping (_ users: Any) -> ()) -> Void {
+        
+//        var postString = "requesterid=1&title=Party Guest"
+//        postString = postString+"&date=2018-03-24"
+//        postString = postString+"&fee=50"
+//        postString = postString+"&address=405 Prince Arthut"
+//        postString = postString+"&description=Surprise party guest for a queen&state=open"
+//
+
+    }
+    
+    //Method just to execute request, assuming the response type is string (and not file)
+    func HTTPsendRequest(request: URLRequest,
+                         callback: @escaping (Error?, String?) -> Void) {
+        print("HERE")
+        let task = URLSession.shared.dataTask(with: request) { (data, res, err) in
+            if (err != nil) {
+                callback(err,nil)
+            } else {
+                callback(nil, String(data: data!, encoding: String.Encoding.utf8))
+            }
+        }
+        task.resume()
+    }
+    
+    // post JSON
+    func createTask(task: Task, callback: @escaping (Error?, String?) -> Void) {
+        
+        
+        let addTaskUrl = "http://localhost:8000/add/task";
+        var taskData = Dictionary<String, Any>()
+        
+        taskData["requesterid"] = 1
+        taskData["title"] = task.title
+        taskData["fee"] = task.fee
+        taskData["address"] = task.location
+        taskData["description"] = task.description
+        taskData["state"] = "open"
+        
+        let data = try! JSONSerialization.data(withJSONObject: taskData, options: [])
+        
+        var request = URLRequest(url: URL(string: addTaskUrl)!)
+        
+        request.httpMethod = "POST"
+        request.addValue("application/json",forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json",forHTTPHeaderField: "Accept")
+        request.httpBody = data
+        HTTPsendRequest(request: request, callback: callback)
+    }
+    
+    
     func getTasks() {
         let usersUrl = URL(string:(url+"/tasks"));
         let task = URLSession.shared.dataTask(with: usersUrl!) {(data, response, error) in
@@ -32,6 +84,5 @@ class APIService {
         }
         task.resume()
     }
-    
     
 }
