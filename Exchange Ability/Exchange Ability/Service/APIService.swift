@@ -24,11 +24,14 @@ class APIService {
         task.resume()
     }
     
-    func getTasks() {
-        let usersUrl = URL(string:(url+"/tasks"));
-        let task = URLSession.shared.dataTask(with: usersUrl!) {(data, response, error) in
-            let tasks = try? JSONSerialization.jsonObject(with: data!);
-            print(tasks)
+    func getTasks(completion: @escaping (_ tasks: [[String: Any]]) -> ()) {
+        var tasks: [[String: Any]] = [[:]];
+        
+        let tasksUrl = URL(string:(url + "/tasks"));
+        let task = URLSession.shared.dataTask(with: tasksUrl!) {
+            (data, response, error) in
+            tasks = try! JSONSerialization.jsonObject(with: data!) as! [[String: Any]];
+            completion(tasks)
         }
         task.resume()
     }
