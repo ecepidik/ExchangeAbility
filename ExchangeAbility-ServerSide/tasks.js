@@ -18,7 +18,6 @@ tasksRouter.get('/', (req,res,next) => {
 tasksRouter.get('/:id', (req, res, next) => {
     var id = req.params.id.toString();
     var query = 'SELECT * FROM tasks WHERE id=' + id;
-    console.log(query);
    pool.query(query, (error, result) => {
        if(error){
            throw error;
@@ -30,7 +29,6 @@ tasksRouter.get('/:id', (req, res, next) => {
 tasksRouter.get('/postedtasks/:id', (req, res, next) => {
     var id = req.params.id.toString();
     var query = 'SELECT * FROM tasks WHERE requesterid=' + id;
-    console.log(query)
     pool.query(query, (error, result) => {
         if(error){
             throw error;
@@ -42,7 +40,6 @@ tasksRouter.get('/postedtasks/:id', (req, res, next) => {
 tasksRouter.get('/mytasks/:id', (req, res, next) => {
     var id = req.params.id.toString();
     var query = 'SELECT * FROM tasks WHERE providerid=' + id;
-    console.log(query)
     pool.query(query, (error, result) => {
         if(error){
             throw error;

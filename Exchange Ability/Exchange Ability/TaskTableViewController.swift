@@ -9,40 +9,63 @@
 import UIKit
 
 class TaskTableViewController: UITableViewController {
+    
+//    @IBOutlet var taskTable: UITableView!
 
-    override func loadView() {
-        APIService().getTasks() { tasks in
-            for item in tasks{
-                let newTask: Task = Task(requestor:myUser.requestor!);
-                
-                let stateString = item["state"] as! String
-                switch stateString {
-                case "open":
-                    newTask.state = Task.State.opened
-                case "completed":
-                    newTask.state = Task.State.completed
-                case "pendingCompleted":
-                    newTask.state = Task.State.pendingCompleted
-                case "assigned":
-                    newTask.state = Task.State.assigned
-                case "cancelled":
-                    newTask.state = Task.State.cancelled
-                default:
-                    newTask.state = Task.State.pending
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let group = DispatchGroup()
+        group.enter()
+        
+        DispatchQueue.global().sync {
+        
+            APIService().getTasks() { tasks in
+                for item in tasks{
+                    let newTask: Task = Task(requestor:myUser.requestor!);
+                    
+                    let stateString = item["state"] as! String
+                    switch stateString {
+                    case "open":
+                        newTask.state = Task.State.opened
+                    case "completed":
+                        newTask.state = Task.State.completed
+                    case "pendingCompleted":
+                        newTask.state = Task.State.pendingCompleted
+                    case "assigned":
+                        newTask.state = Task.State.assigned
+                    case "cancelled":
+                        newTask.state = Task.State.cancelled
+                    default:
+                        newTask.state = Task.State.pending
+                    }
+                    
+                    newTask.title = item["title"] as! String
+                    newTask.fee = item["fee"] as! Double
+                    newTask.description = item["description"] as! String
+                    newTask.location = item["address"] as! String
+                    //newTask.dateTime = item["date"] as! Date
+                    
+                    allTasks.append(newTask)
+                    print(newTask.id)
                 }
-                
-                newTask.title = item["title"] as! String
-                newTask.fee = item["fee"] as! Double
-                newTask.description = item["description"] as! String
-                newTask.location = item["address"] as! String
-                //newTask.dateTime = item["date"] as! Date
-                
-                allTasks.append(newTask)
-                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                print(tasks)
             }
+            
+//            group.leave()
         }
-        print(allTasks)
-        super.loadView()
+        
+        DispatchQueue.global().sync {
+            print(allTasks);
+            super.viewWillAppear(animated)
+        }
+        
+//        group.notify(queue: .global()) {
+//            print(allTasks);
+//            super.viewWillAppear(animated)
+//        }
     }
     
     override func viewDidLoad() {

@@ -28,9 +28,11 @@ class APIService {
         var tasks: [[String: Any]] = [[:]];
         
         let tasksUrl = URL(string:(url + "/tasks"));
+
         let task = URLSession.shared.dataTask(with: tasksUrl!) {
             (data, response, error) in
             tasks = try! JSONSerialization.jsonObject(with: data!) as! [[String: Any]];
+            print(tasks)
             completion(tasks)
         }
         task.resume()
