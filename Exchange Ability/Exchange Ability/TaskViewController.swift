@@ -28,6 +28,7 @@ UIViewController {
 	@IBOutlet weak var image: UIImageView!
 	@IBOutlet weak var requestor: UIButton!
 	@IBOutlet weak var assignTaskButton: UIButton!
+	@IBOutlet weak var requestorLink: UIButton!
 
 	var task: Task?
 
@@ -43,6 +44,7 @@ UIViewController {
 		if task?.photo != nil {
 			image = UIImageView(image: task?.photo)
 		}
+		requestorLink.setTitle(task?.requestor.user.firstName, for: .normal)
 
         // Do any additional setup after loading the view.
     }

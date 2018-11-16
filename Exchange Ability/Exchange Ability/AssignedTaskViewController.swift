@@ -17,6 +17,7 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 	@IBOutlet weak var compensationValue: UILabel!
 	@IBOutlet weak var locationValue: UILabel!
 	@IBOutlet weak var descriptionValue: UILabel!
+	@IBOutlet weak var requestorLink: UIButton!
 
 	var task: Task?
 	let number = "5555555555"	// used as fake phone number until we can get it from the database
@@ -30,6 +31,7 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 		compensationValue.text = String(format: "%.2f", (task?.fee)!)
 		locationValue.text = task?.location
 		descriptionValue.text = task?.description
+		requestorLink.setTitle(task?.requestor.user.firstName, for: .normal)
 
         // Do any additional setup after loading the view.
     }
