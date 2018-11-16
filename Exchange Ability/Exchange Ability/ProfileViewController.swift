@@ -13,11 +13,15 @@ class ProfileViewController: UIViewController {
 	@IBOutlet weak var firstName: UILabel!
 	@IBOutlet weak var email: UILabel!
 	@IBOutlet weak var phoneNumber: UILabel!
-	
+	@IBOutlet weak var lastName: UILabel!
+
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+		firstName.text = myUser.firstName
+		lastName.text = myUser.lastName
+		email.text = myUser.email
+		phoneNumber.text = myUser.phone
     }
     
 

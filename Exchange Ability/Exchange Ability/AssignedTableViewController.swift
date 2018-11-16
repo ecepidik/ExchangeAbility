@@ -10,32 +10,32 @@ import UIKit
 
 class AssignedTableViewController: UITableViewController {
 
-	var userID = 2;
-    
-    var assignedTasks : [Task] = [Task]()
+//    var assignedTasks : [Task] = [Task]()
 
 	override func viewWillAppear(_ animated: Bool) {
         
-        
-        self.assignedTasks = [Task]()
-        var task = Task(requestor : myUser.requestor!)
-        task.title = "Take bottle recycling"
-        task.category = Task.Category.other
-        task.fee = 0.0
-        task.description = "I have wine bottles and beers bottles to be returned. You can keep the money from the return if you take them"
-        task.dateTime = Date()
-        task.location = "3666 rue Hutchison"
-        //    TODO: add image
-        task.state = Task.State.assigned
-        self.assignedTasks.append(task)
-        
+        myUser.provider?.tasks = [Task]()
+////        self.assignedTasks = [Task]()
+//        var task = Task(requestor : myUser.requestor!)
+//        task.title = "Take bottle recycling"
+//        task.category = Task.Category.other
+//        task.fee = 0.0
+//        task.description = "I have wine bottles and beers bottles to be returned. You can keep the money from the return if you take them"
+//        task.dateTime = Date()
+//        task.location = "3666 rue Hutchison"
+//        //    TODO: add image
+//        task.state = Task.State.assigned
+//
+//		myUser.provider?.tasks.append(task);
+////        self.assignedTasks.append(task)
+
 
 		let group = DispatchGroup()
 		group.enter()
 
 		DispatchQueue.global().sync {
 
-			APIService().getproviderTasks(providerID: userID) { tasks in
+			APIService().getproviderTasks(providerID: Int(myUser.uid)!) { tasks in
 				for item in tasks{
 					let newTask: Task = Task(requestor:myUser.requestor!);
 
@@ -61,7 +61,7 @@ class AssignedTableViewController: UITableViewController {
 					newTask.location = item["address"] as! String
 					//newTask.dateTime = item["date"] as! Date
 
-					self.assignedTasks.append(newTask)
+					myUser.provider?.tasks.append(newTask);
 					print(newTask.id)
 				}
 				DispatchQueue.main.async {
@@ -94,7 +94,7 @@ class AssignedTableViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return self.assignedTasks.count
+		return (myUser.provider?.tasks.count)!
 	}
 
 	let cellIdentifier = "AssignedTaskTableViewCell"
@@ -103,12 +103,12 @@ class AssignedTableViewController: UITableViewController {
 			fatalError("The dequeued cell is not an instance of AssignedTaskTableViewCell.")
 		}
 
-		let task = self.assignedTasks[indexPath.row]
+		let task = myUser.provider?.tasks[indexPath.row]
 
-		cell.title.text = task.title
-		cell.fee.text = String(format:"%.2f", task.fee)
-		cell.dateTime.text = String(describing: task.dateTime)
-		cell.location.text = task.location
+		cell.title.text = task?.title
+		cell.fee.text = String(format:"%.2f", (task?.fee)!)
+		cell.dateTime.text = String(describing: task!.dateTime)
+		cell.location.text = task?.location
 
 		return cell
 	}
@@ -169,7 +169,7 @@ class AssignedTableViewController: UITableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "segueAssignedTask" {
 
-			let task = self.assignedTasks[((view as! UITableView).indexPathForSelectedRow!.row)]
+			let task = myUser.provider?.tasks[((view as! UITableView).indexPathForSelectedRow!.row)]
 
 			// Create an instance of PlayerTableViewController and pass the variable
 			let destinationVC = segue.destination as! AssignedTaskViewController

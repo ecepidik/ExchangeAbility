@@ -17,7 +17,7 @@ class TaskTableViewController: UITableViewController {
         
         self.allTasks = [Task]();
         var task = Task(requestor : myUser.requestor!)
-        task.title = "Snow shovel"
+		task.title = "Snow shovel"
         task.category = Task.Category.snowRemoval
         task.fee = 10.0
         task.description = "I have a large driveway I want shoveled"
