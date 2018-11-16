@@ -54,6 +54,22 @@ class APIService {
 		task.resume()
 	}
     
+    func getUserInfo(userID: Int, completion: @escaping (_ tasks: [[String: Any]]) -> ()) {
+        var tasks: [[String: Any]] = [[:]];
+        
+        let tasksUrl = URL(string:(url + "/users/" + String(userID)));
+        print(tasksUrl)
+        
+        let task = URLSession.shared.dataTask(with: tasksUrl!) {
+            (data, response, error) in
+            print(response);
+            tasks = try! JSONSerialization.jsonObject(with: data!) as! [[String: Any]];
+            //            print(tasks)
+            completion(tasks)
+        }
+        task.resume()
+    }
+    
     //Method just to execute request, assuming the response type is string (and not file)
     func HTTPsendRequest(request: URLRequest,
                          callback: @escaping (Error?, String?) -> Void) {
