@@ -57,7 +57,6 @@ class APIService {
     //Method just to execute request, assuming the response type is string (and not file)
     func HTTPsendRequest(request: URLRequest,
                          callback: @escaping (Error?, String?) -> Void) {
-        print("HERE")
         let task = URLSession.shared.dataTask(with: request) { (data, res, err) in
             if (err != nil) {
                 callback(err,nil)
@@ -81,6 +80,12 @@ class APIService {
         taskData["address"] = task.location
         taskData["description"] = task.description
         taskData["state"] = "open"
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        taskData["date"] = dateFormatterGet.string(from: task.dateTime)
+        print(taskData["date"])
         
         let data = try! JSONSerialization.data(withJSONObject: taskData, options: [])
         
