@@ -16,7 +16,7 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 	@IBOutlet weak var dateValue: UILabel!
 	@IBOutlet weak var compensationValue: UILabel!
 	@IBOutlet weak var locationValue: UILabel!
-	@IBOutlet weak var descriptionValue: UILabel!
+	@IBOutlet weak var descriptionText: UITextView!
 	@IBOutlet weak var requestorLink: UIButton!
 
 	var task: Task?
@@ -30,7 +30,7 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 		dateValue.text = String(describing: (task?.dateTime)!)
 		compensationValue.text = String(format: "%.2f", (task?.fee)!)
 		locationValue.text = task?.location
-		descriptionValue.text = task?.description
+		descriptionText.text = task?.description
 		requestorLink.setTitle(task?.requestor.user.firstName, for: .normal)
 
         // Do any additional setup after loading the view.

@@ -24,12 +24,12 @@ UIViewController {
     @IBOutlet weak var dateValue: UILabel!
     @IBOutlet weak var compensationValue: UILabel!
     @IBOutlet weak var locationValue: UILabel!
-    @IBOutlet weak var descriptionValue: UILabel!
 	@IBOutlet weak var image: UIImageView!
 	@IBOutlet weak var requestor: UIButton!
 	@IBOutlet weak var assignTaskButton: UIButton!
 	@IBOutlet weak var requestorLink: UIButton!
-
+	@IBOutlet weak var decriptionText: UITextView!
+	
 	var task: Task?
 
 	override func viewDidLoad() {
@@ -40,7 +40,7 @@ UIViewController {
         dateValue.text = String(describing: (task?.dateTime)!)
         compensationValue.text = String(format: "%.2f", (task?.fee)!)
         locationValue.text = task?.location
-        descriptionValue.text = task?.description
+        decriptionText.text = task?.description
 		if task?.photo != nil {
 			image = UIImageView(image: task?.photo)
 		}
