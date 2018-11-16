@@ -514,6 +514,9 @@
                                         <rect key="frame" x="274" y="376" width="85" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="User"/>
+                                        <connections>
+                                            <segue destination="AvI-cL-rJ7" kind="show" id="D0n-Wh-1nh"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Posted By:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAD-2B-qyh">
                                         <rect key="frame" x="17" y="370" width="182" height="42"/>
@@ -1031,4 +1034,7 @@
         <image name="second" width="30" height="30"/>
         <image name="userDefault" width="491.51998901367188" height="491.51998901367188"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="D0n-Wh-1nh"/>
+    </inferredMetricsTieBreakers>
 </document>

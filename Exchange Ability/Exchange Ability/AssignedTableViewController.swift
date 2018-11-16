@@ -15,20 +15,6 @@ class AssignedTableViewController: UITableViewController {
 	override func viewWillAppear(_ animated: Bool) {
         
         myUser.provider?.tasks = [Task]()
-////        self.assignedTasks = [Task]()
-//        var task = Task(requestor : myUser.requestor!)
-//        task.title = "Take bottle recycling"
-//        task.category = Task.Category.other
-//        task.fee = 0.0
-//        task.description = "I have wine bottles and beers bottles to be returned. You can keep the money from the return if you take them"
-//        task.dateTime = Date()
-//        task.location = "3666 rue Hutchison"
-//        //    TODO: add image
-//        task.state = Task.State.assigned
-//
-//		myUser.provider?.tasks.append(task);
-////        self.assignedTasks.append(task)
-
 
 		let group = DispatchGroup()
 		group.enter()
@@ -37,7 +23,11 @@ class AssignedTableViewController: UITableViewController {
 
 			APIService().getproviderTasks(providerID: Int(myUser.uid)!) { tasks in
 				for item in tasks{
-					let newTask: Task = Task(requestor:myUser.requestor!);
+					let requestorId : Int = item["requesterid"] as! Int
+					let requestor = getUserDatabase(uid: requestorId)
+					let requestorUser = requestor.requestor
+
+					let newTask: Task = Task(requestor: requestorUser!);
 
 					let stateString = item["state"] as! String
 					switch stateString {

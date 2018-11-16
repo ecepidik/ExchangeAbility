@@ -20,7 +20,6 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 	@IBOutlet weak var requestorLink: UIButton!
 
 	var task: Task?
-	let number = "5555555555"	// used as fake phone number until we can get it from the database
 
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,11 +89,11 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 
 	@IBAction func contactPoster(_ sender: Any) {
 		// create alert to confirm
-		let alert = UIAlertController(title: number, message: nil, preferredStyle: .alert)
+		let alert = UIAlertController(title: self.task?.requestor.user.phone, message: nil, preferredStyle: .alert)
 		
 		let callAction = UIAlertAction(title: "Call", style: .default) { (action) -> Void in
 			// call poster
-			let url = URL(string: "tel://\(self.number)")
+			let url = URL(string: "tel://\(self.task?.requestor.user.phone)")
 			if UIApplication.shared.canOpenURL(url!) {
 				UIApplication.shared.open(url!)
 			}
@@ -105,7 +104,7 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 			if (MFMessageComposeViewController.canSendText()) {
 				let controller = MFMessageComposeViewController()
 				controller.body = "Message Body"
-				controller.recipients = [self.number]
+				controller.recipients = [self.task?.requestor.user.phone] as! [String]
 				controller.messageComposeDelegate = self
 				self.present(controller, animated: true, completion: nil)
 			}
@@ -128,14 +127,22 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 		self.dismiss(animated: true, completion: nil)
 	}
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+
+		// when pressing on the requestors name, bring to requestor page
+		if segue.destination is RequestorViewController
+		{
+			// pass the requestor info over
+			let vc = segue.destination as? RequestorViewController
+			vc?.requestor = task?.requestor
+		}
     }
-    */
+
 
 }

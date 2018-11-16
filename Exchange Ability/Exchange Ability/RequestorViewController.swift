@@ -14,7 +14,6 @@ class RequestorViewController: UIViewController, MFMessageComposeViewControllerD
 	@IBOutlet weak var email: UILabel!
 	@IBOutlet weak var phoneNumber: UILabel!
 
-	let number = "5555555555"	// used as fake phone number until we can get it from the database
 	var requestor: Requestor?
 
 	override func viewDidLoad() {
@@ -29,11 +28,11 @@ class RequestorViewController: UIViewController, MFMessageComposeViewControllerD
     
 	@IBAction func contactRequestor(_ sender: Any) {
 		// create alert to confirm
-		let alert = UIAlertController(title: number, message: nil, preferredStyle: .alert)
+		let alert = UIAlertController(title: requestor?.user.phone, message: nil, preferredStyle: .alert)
 
 		let callAction = UIAlertAction(title: "Call", style: .default) { (action) -> Void in
 			// call poster
-			let url = URL(string: "tel://\(self.number)")
+			let url = URL(string: "tel://\(self.requestor?.user.phone)")
 			if UIApplication.shared.canOpenURL(url!) {
 				UIApplication.shared.open(url!)
 			}
@@ -44,7 +43,7 @@ class RequestorViewController: UIViewController, MFMessageComposeViewControllerD
 			if (MFMessageComposeViewController.canSendText()) {
 				let controller = MFMessageComposeViewController()
 				controller.body = "Message Body"
-				controller.recipients = [self.number]
+				controller.recipients = [self.requestor?.user.phone] as! [String]
 				controller.messageComposeDelegate = self
 				self.present(controller, animated: true, completion: nil)
 			}
@@ -75,6 +74,6 @@ class RequestorViewController: UIViewController, MFMessageComposeViewControllerD
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
-
+	*/
+    
 }
