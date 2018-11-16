@@ -11,8 +11,22 @@ import UIKit
 class TaskTableViewController: UITableViewController {
     
 //    @IBOutlet var taskTable: UITableView!
+    var allTasks : [Task] = [Task]()
 
     override func viewWillAppear(_ animated: Bool) {
+        
+        self.allTasks = [Task]();
+        var task = Task(requestor : myUser.requestor!)
+        task.title = "Snow shovel"
+        task.category = Task.Category.snowRemoval
+        task.fee = 10.0
+        task.description = "I have a large driveway I want shoveled"
+        task.dateTime = Date()
+        task.location = "3514 rue Hutchison"
+        //    TODO: add image
+        task.state = Task.State.opened
+        self.allTasks.append(task)
+        
         
         let group = DispatchGroup()
         group.enter()
@@ -45,7 +59,7 @@ class TaskTableViewController: UITableViewController {
                     newTask.location = item["address"] as! String
                     //newTask.dateTime = item["date"] as! Date
                     
-                    allTasks.append(newTask)
+                    self.allTasks.append(newTask)
 //                    print(newTask.id)
                 }
                 DispatchQueue.main.async {
@@ -91,7 +105,7 @@ class TaskTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allTasks.count
+        return self.allTasks.count
     }
 
 	let cellIdentifier = "TaskTableViewCell"
@@ -100,7 +114,7 @@ class TaskTableViewController: UITableViewController {
 			fatalError("The dequeued cell is not an instance of TaskTableViewCell.")
 		}
 
-		let task = allTasks[indexPath.row]
+		let task = self.allTasks[indexPath.row]
 
 		cell.titleLabel.text = task.title
         cell.fee.text = String(format:"%.2f", task.fee)
@@ -156,7 +170,7 @@ class TaskTableViewController: UITableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "segueTask" {
 
-			let task = allTasks[((view as! UITableView).indexPathForSelectedRow!.row)]
+			let task = self.allTasks[((view as! UITableView).indexPathForSelectedRow!.row)]
 
 			// Create an instance of PlayerTableViewController and pass the variable
 			let destinationVC = segue.destination as! TaskViewController
