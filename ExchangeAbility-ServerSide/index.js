@@ -62,12 +62,17 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.post('/add/task', function(req, res) {
 
-    var queryTask = '\'' + req.body.requesterid + '\', \'' + req.body.title
-        + '\', \'2018-11-15\', \'21:00:00\', \''
+    var dateTime = req.body.date.split(" ");
+    var date = dateTime[0];
+    var time =dateTime[1];
+
+    var queryTask = '\'' + req.body.requesterid + '\', \'' + req.body.title + '\', \''
+        + date + '\', \'' + time + '\', \''
         + req.body.fee + '\', \''
         + req.body.address + '\', \''
         + req.body.description + '\', \'open\''
 
+    console.log(queryTask);
     client.query(
         'INSERT INTO tasks (requesterid, title, date, time, fee, address, description, state)' +
         'VALUES (' + queryTask + ');', (err, obj) =>
