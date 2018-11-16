@@ -119,6 +119,7 @@
 				A6B1F73120451E0400BF5DFF /* Model */,
 				A6B1F70F20451B6D00BF5DFF /* AppDelegate.swift */,
 				A6ACAF11206204B70070491F /* MyUser.swift */,
+				A6CF4F712069D715004941F9 /* Database.swift */,
 				A6B1F71120451B6D00BF5DFF /* CreateTaskController.swift */,
 				A6CF4F752069E08B004941F9 /* TaskTableViewController.swift */,
 				A6CF4F732069DCBC004941F9 /* TaskTableViewCell.swift */,
@@ -132,7 +133,6 @@
 				A6B1F71820451B6D00BF5DFF /* Assets.xcassets */,
 				A6B1F71A20451B6D00BF5DFF /* LaunchScreen.storyboard */,
 				A6B1F71D20451B6D00BF5DFF /* Info.plist */,
-				A6CF4F712069D715004941F9 /* Database.swift */,
 			);
 			path = "Exchange Ability";
 			sourceTree = "<group>";

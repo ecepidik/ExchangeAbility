@@ -16,18 +16,7 @@ class TaskTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.allTasks = [Task]();
-        var task = Task(requestor : myUser.requestor!)
-		task.title = "Snow shovel"
-        task.category = Task.Category.snowRemoval
-        task.fee = 10.0
-        task.description = "I have a large driveway I want shoveled"
-        task.dateTime = Date()
-        task.location = "3514 rue Hutchison"
-        //    TODO: add image
-        task.state = Task.State.opened
-        self.allTasks.append(task)
-        
-        
+
         let group = DispatchGroup()
         group.enter()
         
@@ -35,7 +24,11 @@ class TaskTableViewController: UITableViewController {
         
             APIService().getTasks() { tasks in
                 for item in tasks{
-                    let newTask: Task = Task(requestor:myUser.requestor!);
+					// get requestor
+					let requestorId : Int = item["requesterid"] as! Int
+					let requestor = getUserDatabase(uid: requestorId)
+					let requestorUser = requestor.requestor
+					let newTask: Task = Task(requestor: requestorUser!);
                     
                     let stateString = item["state"] as! String
                     switch stateString {
@@ -58,7 +51,7 @@ class TaskTableViewController: UITableViewController {
                     newTask.description = item["description"] as! String
                     newTask.location = item["address"] as! String
                     //newTask.dateTime = item["date"] as! Date
-                    
+
                     self.allTasks.append(newTask)
 //                    print(newTask.id)
                 }

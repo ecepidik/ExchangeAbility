@@ -54,18 +54,18 @@ class APIService {
 		task.resume()
 	}
     
-    func getUserInfo(userID: Int, completion: @escaping (_ tasks: [[String: Any]]) -> ()) {
-        var tasks: [[String: Any]] = [[:]];
+    func getUserInfo(userID: Int, completion: @escaping (_ user: [[String: Any]]) -> ()) {
+        var user: [[String: Any]] = [[:]];
         
-        let tasksUrl = URL(string:(url + "/users/" + String(userID)));
-        print(tasksUrl)
+        let usersUrl = URL(string:(url + "/users/" + String(userID)));
+        print(usersUrl)
         
-        let task = URLSession.shared.dataTask(with: tasksUrl!) {
+        let task = URLSession.shared.dataTask(with: usersUrl!) {
             (data, response, error) in
             print(response);
-            tasks = try! JSONSerialization.jsonObject(with: data!) as! [[String: Any]];
+            user = try! JSONSerialization.jsonObject(with: data!) as! [[String: Any]];
             //            print(tasks)
-            completion(tasks)
+            completion(user)
         }
         task.resume()
     }
