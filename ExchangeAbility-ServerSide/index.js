@@ -9,6 +9,9 @@ const { Pool, Client } = require('pg')
 const tasksRouter = require('./tasks.js');
 app.use('/tasks', tasksRouter)
 
+const usersRouter = require('./users.js');
+app.use('/users', usersRouter)
+
 const pool = new Pool({
     user: 'exchangeability',
     host: 'exchangeabilitydata.chwjpkpq8pgl.us-east-2.rds.amazonaws.com',
