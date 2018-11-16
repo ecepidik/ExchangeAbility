@@ -11,6 +11,7 @@
 		A648507D21812C9E009CB31F /* AssignedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648507C21812C9E009CB31F /* AssignedTableViewController.swift */; };
 		A648508121814606009CB31F /* AssignedTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A648508021814606009CB31F /* AssignedTaskViewController.swift */; };
 		A64850832182CB80009CB31F /* RequestorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64850822182CB80009CB31F /* RequestorViewController.swift */; };
+		A66403DD219F34B0001805B5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66403DC219F34B0001805B5 /* ProfileViewController.swift */; };
 		A6ACAF12206204B70070491F /* MyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ACAF11206204B70070491F /* MyUser.swift */; };
 		A6B1F71020451B6D00BF5DFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B1F70F20451B6D00BF5DFF /* AppDelegate.swift */; };
 		A6B1F71220451B6D00BF5DFF /* CreateTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B1F71120451B6D00BF5DFF /* CreateTaskController.swift */; };
@@ -48,6 +49,7 @@
 		A648507C21812C9E009CB31F /* AssignedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedTableViewController.swift; sourceTree = "<group>"; };
 		A648508021814606009CB31F /* AssignedTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignedTaskViewController.swift; sourceTree = "<group>"; };
 		A64850822182CB80009CB31F /* RequestorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestorViewController.swift; sourceTree = "<group>"; };
+		A66403DC219F34B0001805B5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A6ACAF11206204B70070491F /* MyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUser.swift; sourceTree = "<group>"; };
 		A6B1F70C20451B6D00BF5DFF /* Exchange Ability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exchange Ability.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6B1F70F20451B6D00BF5DFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				A648507A2181298D009CB31F /* AssignedTaskTableViewCell.swift */,
 				A648508021814606009CB31F /* AssignedTaskViewController.swift */,
 				A64850822182CB80009CB31F /* RequestorViewController.swift */,
+				A66403DC219F34B0001805B5 /* ProfileViewController.swift */,
 				A6B1F71520451B6D00BF5DFF /* Main.storyboard */,
 				A6B1F71820451B6D00BF5DFF /* Assets.xcassets */,
 				A6B1F71A20451B6D00BF5DFF /* LaunchScreen.storyboard */,
@@ -287,6 +290,7 @@
 				A648508121814606009CB31F /* AssignedTaskViewController.swift in Sources */,
 				A648507B2181298D009CB31F /* AssignedTaskTableViewCell.swift in Sources */,
 				A6B1F73D2045262900BF5DFF /* ProviderRating.swift in Sources */,
+				A66403DD219F34B0001805B5 /* ProfileViewController.swift in Sources */,
 				A6CF4F722069D715004941F9 /* Database.swift in Sources */,
 				A6B1F73F20452B0D00BF5DFF /* UserRole.swift in Sources */,
 			);
