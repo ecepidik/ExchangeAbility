@@ -46,19 +46,19 @@ class TaskTableViewController: UITableViewController {
                     //newTask.dateTime = item["date"] as! Date
                     
                     allTasks.append(newTask)
-                    print(newTask.id)
+//                    print(newTask.id)
                 }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-                print(tasks)
+//                print(tasks)
             }
             
 //            group.leave()
         }
         
         DispatchQueue.global().sync {
-            print(allTasks);
+//            print(allTasks);
             super.viewWillAppear(animated)
         }
         

@@ -39,6 +39,7 @@ tasksRouter.get('/postedtasks/:id', (req, res, next) => {
 
 tasksRouter.get('/mytasks/:id', (req, res, next) => {
     var id = req.params.id.toString();
+    console.log(id);
     var query = 'SELECT * FROM tasks WHERE providerid=' + id;
     pool.query(query, (error, result) => {
         if(error){

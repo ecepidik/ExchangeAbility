@@ -45,20 +45,18 @@ class AssignedTableViewController: UITableViewController {
 					newTask.location = item["address"] as! String
 					//newTask.dateTime = item["date"] as! Date
 
-					allTasks.append(newTask)
+					assignedTasks.append(newTask)
 					print(newTask.id)
 				}
 				DispatchQueue.main.async {
 					self.tableView.reloadData()
 				}
-				print(tasks)
 			}
 
 			//            group.leave()
 		}
 
 		DispatchQueue.global().sync {
-			print(allTasks);
 			super.viewWillAppear(animated)
 		}
 	}
