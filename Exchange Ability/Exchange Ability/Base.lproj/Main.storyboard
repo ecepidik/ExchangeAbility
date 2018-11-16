@@ -244,6 +244,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Settings"/>
                             </button>
+                            <connections>
+                                <segue destination="LHg-4B-XgC" kind="show" id="3Xo-cw-9KS"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -281,7 +284,7 @@
             </objects>
             <point key="canvasLocation" x="1972" y="1551.2743628185908"/>
         </scene>
-        <!--My Tasks-->
+        <!--Assigned Tasks-->
         <scene sceneID="4Ex-BW-0Fg">
             <objects>
                 <tableViewController storyboardIdentifier="AssignedTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1v9-B7-8Rw" customClass="AssignedTableViewController" customModule="Exchange_Ability" customModuleProvider="target" sceneMemberID="viewController">
@@ -341,7 +344,7 @@
                             <outlet property="delegate" destination="1v9-B7-8Rw" id="yoU-V3-fmw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Tasks" id="Kld-cg-Jla"/>
+                    <navigationItem key="navigationItem" title="Assigned Tasks" id="Kld-cg-Jla"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bPc-bo-p6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -860,6 +863,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srD-0x-HaK">
+                                <rect key="frame" x="136" y="558" width="103" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Contact Poster"/>
+                                <connections>
+                                    <action selector="contactPoster:" destination="qb7-Lm-rfW" eventType="touchUpInside" id="VCY-yf-Bks"/>
+                                    <action selector="contactRequestor:" destination="AvI-cL-rJ7" eventType="touchUpInside" id="BFQ-jS-Bu1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vAZ-5t-6xZ"/>
@@ -912,6 +924,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTl-t8-swl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1032.8" y="1551.2743628185908"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ljf-8U-ZhJ">
+            <objects>
+                <viewController id="LHg-4B-XgC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p1Z-sx-Z1j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Under Construction: Future Settings Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCD-Jo-J6i">
+                                <rect key="frame" x="27" y="161" width="320" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2q7-Mf-D2Q"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jlQ-EN-OUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="269.60000000000002" y="2165.6671664167916"/>
         </scene>
         <!--My Tasks-->
         <scene sceneID="AES-qu-bFS">
