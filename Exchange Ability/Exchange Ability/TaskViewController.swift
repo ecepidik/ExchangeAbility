@@ -75,7 +75,7 @@ UIViewController {
 
 	// when you click do this task button
 	@IBAction func assignTask(_ sender: Any) {
-		let alert = UIAlertController(title: "You will now be assigned to complete this task", message: "Be sure to complete the task at the assigned time, contact your poster for any questions", preferredStyle: .alert)
+		let alert = UIAlertController(title: "You will now be assigned to complete this task", message: "Be sure to complete the task at the scheduled time, contact the poster for any questions", preferredStyle: .alert)
 
 		// if the user says yes, unassign the task
 		let yesAction = UIAlertAction(title: "Confirm", style: .default) { (action) -> Void in
