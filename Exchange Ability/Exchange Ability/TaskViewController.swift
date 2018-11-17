@@ -26,7 +26,6 @@ UIViewController {
     @IBOutlet weak var locationValue: UILabel!
 	@IBOutlet weak var image: UIImageView!
 	@IBOutlet weak var requestor: UIButton!
-	@IBOutlet weak var assignTaskButton: UIButton!
 	@IBOutlet weak var requestorLink: UIButton!
 	@IBOutlet weak var decriptionText: UITextView!
 	
@@ -76,11 +75,30 @@ UIViewController {
 
 	// when you click do this task button
 	@IBAction func assignTask(_ sender: Any) {
-		// assigned the task to the current user and updates the state
-		task?.provider = myUser.provider
-		task?.state = Task.State.assigned
-		// go back to the previous feed page
-		performSegue(withIdentifier: "unwindToTaskList", sender: self)
+		let alert = UIAlertController(title: "You will now be assigned to complete this task", message: "Be sure to complete the task at the assigned time, contact your poster for any questions", preferredStyle: .alert)
+
+		// if the user says yes, unassign the task
+		let yesAction = UIAlertAction(title: "Confirm", style: .default) { (action) -> Void in
+			// TODO: unassign task
+			// update task state back to opened
+			self.task?.state = Task.State.opened
+
+			// assigned the task to the current user and updates the state
+			self.task?.provider = myUser.provider
+			self.task?.state = Task.State.assigned
+			// go back to the previous feed page
+			self.performSegue(withIdentifier: "unwindToTaskList", sender: self)
+		}
+
+		alert.addAction(yesAction)
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		self.present(alert, animated: true)
+
+//		// assigned the task to the current user and updates the state
+//		task?.provider = myUser.provider
+//		task?.state = Task.State.assigned
+//		// go back to the previous feed page
+//		performSegue(withIdentifier: "unwindToTaskList", sender: self)
 	}
 
     // MARK: - Navigation
