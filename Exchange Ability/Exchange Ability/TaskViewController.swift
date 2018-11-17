@@ -38,7 +38,7 @@ UIViewController {
 		titleValue.text = task?.title
         categoryValue.text = task?.category.rawValue
         dateValue.text = String(describing: (task?.dateTime)!)
-        compensationValue.text = String(format: "%.2f", (task?.fee)!)
+        compensationValue.text = "$" + String(format: "%.2f", (task?.fee)!)
         locationValue.text = task?.location
         decriptionText.text = task?.description
 		if task?.photo != nil {

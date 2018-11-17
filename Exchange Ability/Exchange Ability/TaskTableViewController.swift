@@ -22,8 +22,6 @@ class TaskTableViewController: UITableViewController {
         
         DispatchQueue.global().sync {
 
-//		allTasks = getAllTasks()
-
             APIService().getTasks() { tasks in
                 for item in tasks{
 					// get requestor
@@ -49,13 +47,20 @@ class TaskTableViewController: UITableViewController {
                         newTask.state = Task.State.pending
                     }
 
+
                     newTask.title = item["title"] as! String
                     newTask.fee = item["fee"] as! Double
                     newTask.description = item["description"] as! String
                     newTask.location = item["address"] as! String
 					// TODO parse date and provider
-                    //newTask.dateTime = item["date"] as! Date
 
+					let dateFormatter = DateFormatter()
+					dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+					guard let date = dateFormatter.date(from: item["date"] as! String) else {
+						fatalError("ERROR: Date conversion failed due to mismatched format.")
+					}
+
+					newTask.dateTime = date
 //					newTask.provider = (getUserDatabase(uid: (item["providerid"] as? Int)?)).provider
 
                     self.allTasks.append(newTask)
@@ -85,7 +90,7 @@ class TaskTableViewController: UITableViewController {
         tableView.reloadData()
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
+		        // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -116,9 +121,13 @@ class TaskTableViewController: UITableViewController {
 		let task = self.allTasks[indexPath.row]
 
 		cell.titleLabel.text = task.title
-        cell.fee.text = String(format:"%.2f", task.fee)
-		cell.Category.text = task.category.rawValue
-		cell.Date.text = String(describing: task.dateTime)
+        cell.fee.text = "$" + String(format:"%.2f", task.fee)
+//		cell.Category.text = task.category.rawValue
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "EEEE, MMM d @ h:mm a"
+		let date = dateFormatter.string(from: task.dateTime)
+		cell.Date.text = date
+//		cell.Date.text = String(describing: task.dateTime)
         cell.location.text = task.location
 
 		return cell

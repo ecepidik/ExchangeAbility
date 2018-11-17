@@ -49,6 +49,15 @@ class AssignedTableViewController: UITableViewController {
 					newTask.fee = item["fee"] as! Double
 					newTask.description = item["description"] as! String
 					newTask.location = item["address"] as! String
+
+					let dateFormatter = DateFormatter()
+					dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+					guard let date = dateFormatter.date(from: item["date"] as! String) else {
+						fatalError("ERROR: Date conversion failed due to mismatched format.")
+					}
+					
+					newTask.dateTime = date
+
 					//newTask.dateTime = item["date"] as! Date
 
 					myUser.provider?.tasks.append(newTask);
