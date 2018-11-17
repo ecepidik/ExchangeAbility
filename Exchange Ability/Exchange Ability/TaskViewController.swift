@@ -37,7 +37,14 @@ UIViewController {
         
 		titleValue.text = task?.title
         categoryValue.text = task?.category.rawValue
-        dateValue.text = String(describing: (task?.dateTime)!)
+
+		//TODO fix time
+//        dateValue.text = String(describing: (task?.dateTime)!)
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "EEEE, MMM d @ h:mm a"
+		let date = dateFormatter.string(from: ((task?.dateTime)!))
+		dateValue.text = date
+
         compensationValue.text = "$" + String(format: "%.2f", (task?.fee)!)
         locationValue.text = task?.location
         decriptionText.text = task?.description
