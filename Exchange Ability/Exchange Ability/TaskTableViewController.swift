@@ -12,11 +12,24 @@ class TaskTableViewController: UITableViewController {
     
 //    @IBOutlet var taskTable: UITableView!
     var allTasks : [Task] = [Task]()
+    
 
     override func viewWillAppear(_ animated: Bool) {
         
+        print("We are here!")
         self.allTasks = [Task]();
+//        var sampleTask = Task(requestor: myUser.requestor!)
+//        sampleTask.title = "Snow Shovel"
+//        sampleTask.category = Task.Category.snowRemoval
+//        sampleTask.fee = 10.0
+//        sampleTask.description = "I have a large driveway I would like shoveled"
+//        sampleTask.dateTime = Date()
+//        sampleTask.location = "3514 Rue Hutchison"
+//        sampleTask.state = Task.State.opened
+//        self.allTasks.append(sampleTask)
 
+        var loadingTasks = [Task]();
+        
         let group = DispatchGroup()
         group.enter()
         
@@ -63,9 +76,16 @@ class TaskTableViewController: UITableViewController {
 					newTask.dateTime = date
 //					newTask.provider = (getUserDatabase(uid: (item["providerid"] as? Int)?)).provider
 
-                    self.allTasks.append(newTask)
+                    loadingTasks.append(newTask)
 //                    print(newTask.id)
                 }
+                
+                self.allTasks = [Task]();
+                
+                for task in loadingTasks {
+                    self.allTasks.append(task)
+                }
+                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -117,7 +137,22 @@ class TaskTableViewController: UITableViewController {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell  else {
 			fatalError("The dequeued cell is not an instance of TaskTableViewCell.")
 		}
+        
+//        print("First all Task Count: ", allTasks.count)
+//        print("First index row Count: ", indexPath.row)
+        if(self.allTasks.count <= indexPath.row) {
+            
+            let numberToAdd = indexPath.row + 1 - self.allTasks.count
+            let sampleTask = Task(requestor : myUser.requestor!)
+            
+            for i in 0...(numberToAdd) {
+                allTasks.append(sampleTask)
+            }
+        }
 
+//        print("allTasks.count: ", allTasks.count)
+//        print("indexPath.row: ", indexPath.row)
+        
 		let task = self.allTasks[indexPath.row]
 
 		cell.titleLabel.text = task.title

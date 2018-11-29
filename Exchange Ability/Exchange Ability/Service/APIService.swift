@@ -42,11 +42,11 @@ class APIService {
 		var tasks: [[String: Any]] = [[:]];
 
 		let tasksUrl = URL(string:(url + "/tasks/mytasks/" + String(providerID)));
-        print(tasksUrl)
+//        print(tasksUrl)
 
 		let task = URLSession.shared.dataTask(with: tasksUrl!) {
 			(data, response, error) in
-            print(response);
+//            print(response);
 			tasks = try! JSONSerialization.jsonObject(with: data!) as! [[String: Any]];
 //            print(tasks)
 			completion(tasks)
@@ -58,11 +58,11 @@ class APIService {
         var user: [[String: Any]] = [[:]];
         
         let usersUrl = URL(string:(url + "/users/" + String(userID)));
-        print(usersUrl)
+//        print(usersUrl)
         
         let task = URLSession.shared.dataTask(with: usersUrl!) {
             (data, response, error) in
-            print(response);
+//            print(response);
             user = try! JSONSerialization.jsonObject(with: data!) as! [[String: Any]];
             //            print(tasks)
             completion(user)
@@ -101,7 +101,7 @@ class APIService {
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         taskData["date"] = dateFormatterGet.string(from: task.dateTime)
-        print(taskData["date"])
+//        print(taskData["date"])
         
         let data = try! JSONSerialization.data(withJSONObject: taskData, options: [])
         
