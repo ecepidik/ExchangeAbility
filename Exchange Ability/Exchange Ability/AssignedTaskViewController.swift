@@ -60,6 +60,21 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 			alert.addAction(yesAction)
 			alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
 			self.present(alert, animated: true)
+		} else {
+			let alert = UIAlertController(title: "Are you sure you completed this task?", message: "The requestor will must also confirm before you are paid.", preferredStyle: .alert)
+
+			let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
+				pendingTask()
+
+				// bring back to My Tasks page
+				let assignedTasksView = self.storyboard?.instantiateViewController(withIdentifier: "AssignedTableViewController")
+				self.navigationController?.pushViewController(assignedTasksView!, animated: true)
+
+				// TODO: refresh My Tasks page
+			}
+			alert.addAction(yesAction)
+			alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+			self.present(alert, animated: true)
 		}
 
 		func pendingTask() {
@@ -69,7 +84,9 @@ class AssignedTaskViewController: UIViewController, MFMessageComposeViewControll
 			// TODO: send message to requestor to confirm it was completed
 		}
 
-
+		// bring back to My Tasks page
+		let assignedTasksView = self.storyboard?.instantiateViewController(withIdentifier: "AssignedTableViewController")
+		self.navigationController?.pushViewController(assignedTasksView!, animated: true)
 	}
 
 	@IBAction func unassignTask(_ sender: Any) {
