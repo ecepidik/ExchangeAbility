@@ -14,6 +14,8 @@ class AssignedTableViewController: UITableViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
         
+        var loadingTasks = [Task]();
+        
         myUser.provider?.tasks = [Task]()
 
 		let group = DispatchGroup()
@@ -60,9 +62,17 @@ class AssignedTableViewController: UITableViewController {
 
 					//newTask.dateTime = item["date"] as! Date
 
-					myUser.provider?.tasks.append(newTask);
+                    loadingTasks.append(newTask);
+//                    myUser.provider?.tasks.append(newTask);
 					print(newTask.id)
 				}
+                
+                myUser.provider?.tasks = [Task]();
+                
+                for task in loadingTasks {
+                    myUser.provider?.tasks.append(task)
+                }
+                
 				DispatchQueue.main.async {
 					self.tableView.reloadData()
 				}
@@ -101,6 +111,16 @@ class AssignedTableViewController: UITableViewController {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "AssignedTaskTableViewCell", for: indexPath) as? AssignedTaskTableViewCell  else {
 			fatalError("The dequeued cell is not an instance of AssignedTaskTableViewCell.")
 		}
+        
+        if((myUser.provider?.tasks.count)! <= indexPath.row) {
+            
+            let numberToAdd = indexPath.row + 1 - (myUser.provider?.tasks.count)!
+            let sampleTask = Task(requestor : myUser.requestor!)
+            
+            for i in 0...(numberToAdd) {
+                myUser.provider?.tasks.append(sampleTask)
+            }
+        }
 
 		let task = myUser.provider?.tasks[indexPath.row]
 
